@@ -1,0 +1,31 @@
+openapi: "3.0.1"
+info:
+  title: "OpenAPI Petstore"
+  version: "1.0.0"
+paths:
+  /pets:
+    get:
+      operationId: "listPets"
+      responses:
+        default:
+          description: "Default response for GET /pets"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "http_proxy"
+        httpMethod: "GET"
+        uri: "https://raw.githubusercontent.com/three-steps/pets/master/data/pets.json"
+        connectionType: "INTERNET"
+  /pets/{petId}:
+    get:
+      operationId: "showPetById"
+      responses:
+        default:
+          description: "Default response for GET /pets/{petId}"
+      x-amazon-apigateway-integration:
+        payloadFormatVersion: "1.0"
+        type: "http_proxy"
+        httpMethod: "GET"
+        uri: "https://raw.githubusercontent.com/three-steps/pets/master/data/{petId}.json"
+        connectionType: "INTERNET"
+x-amazon-apigateway-importexport-version: "1.0"
+
